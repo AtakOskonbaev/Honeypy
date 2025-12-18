@@ -42,3 +42,5 @@ def run_web_honeypot(port=5000, input_username="admin", input_password="password
     run_web_honeypot_app.run(debug=True, port=port, host='0.0.0.0')
 
     return run_web_honeypot_app
+
+# run_web_honeypot(port=5000, input_username="admin", input_password="pass")

@@ -115,7 +115,7 @@ def client_handle(client, addr, username, password):
         if channel is None:
             print('No channel was opened.')  
         
-        standard_banner = 'welcome to my server Ubuntu for experiments!\r\n\r\n'
+        standard_banner = b'welcome to my server Ubuntu for experiments!\r\n\r\n'
         channel.send(standard_banner)
         emulated_shell(channel, client_ip=client_ip)
     except Exception as error:
@@ -147,4 +147,4 @@ def honeypot(address, port, username, password):
         except Exception as error:
             print(error)
 
-honeypot('127.0.0.1', 2223, username=None, password=None)
+# honeypot('127.0.0.1', 2223, username=None, password=None)
