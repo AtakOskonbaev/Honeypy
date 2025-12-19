@@ -1,37 +1,37 @@
 # Honeypy 🐝
 
-Honeypy — это простой honeypot, написанный на Python, предназначенный для перехвата и логирования подозрительной активности атакующих.  
-Проект используется в учебных и исследовательских целях для анализа попыток несанкционированного доступа.
+Honeypy is a simple honeypot written in Python, designed to capture and log suspicious attacker activity.  
+The project is intended for educational and research purposes to analyze unauthorized access attempts.
 
 ---
 
-## 📌 Возможности
+## 📌 Features
 
 - SSH honeypot
 - HTTP (web) honeypot
-- Логирование:
-  - IP-адресов
-  - логинов и паролей
-  - HTTP-запросов
-  - команд (SSH)
-- Простая архитектура
-- Легко расширяется
+- Logging of:
+  - IP addresses
+  - usernames and passwords
+  - HTTP requests
+  - commands (SSH)
+- Simple architecture
+- Easy to extend
 
 ---
 
-## 📁 Структура проекта
+## 📁 Project Structure
 
 ```
 
 Honeypy/
-├── templates/              # HTML-шаблоны для web honeypot
-├── honeypy.py              # Главный файл запуска
+├── templates/              # HTML templates for web honeypot
+├── honeypy.py              # Main launcher file
 ├── ssh_honeypot.py         # SSH honeypot
 ├── web_honeypot.py         # HTTP honeypot
-├── reqs.txt                # Python-зависимости
-├── audits.log              # Общие логи
-├── cmd_audits.log          # Логи SSH-команд
-├── http_audits.log         # Логи HTTP-запросов
+├── reqs.txt                # Python dependencies
+├── audits.log              # General logs
+├── cmd_audits.log          # SSH command logs
+├── http_audits.log         # HTTP request logs
 ├── .gitignore
 └── README.md
 
@@ -39,23 +39,19 @@ Honeypy/
 
 ---
 
-## 🧠 Требования
+## 🧠 Requirements
 
 - Python 3.x
 - pip
 
 ---
 
-## 📦 Установка
-
-Клонируй репозиторий:
+## 📦 Installation
 
 ```bash
 git clone https://github.com/AtakOskonbaev/Honeypy.git
 cd Honeypy
 ````
-
-Установи зависимости:
 
 ```bash
 pip install -r reqs.txt
@@ -63,43 +59,33 @@ pip install -r reqs.txt
 
 ---
 
-## ▶️ Запуск
+## ▶️ Usage
 
-### Запуск всех модулей
+### Run SSH honeypot
 
 ```bash
-python honeypy.py
+python3 honeypy.py -a 127.0.0.1 -p 2223 -u username --password password --ssh
+```
+
+### Run Web honeypot
+
+```bash
+python3 honeypy.py -a 127.0.0.1 -p 2223 -u username --password password --http
 ```
 
 ---
 
-### Запуск только SSH honeypot
+## 📊 Logs
 
-```bash
-python ssh_honeypot.py
-```
+Honeypy stores all attacker activity in log files:
 
----
+| File            | Description                      |
+| --------------- | -------------------------------- |
+| audits.log      | General events                   |
+| cmd_audits.log  | Commands entered via SSH         |
+| http_audits.log | HTTP requests and login attempts |
 
-### Запуск только Web honeypot
-
-```bash
-python web_honeypot.py
-```
-
----
-
-## 📊 Логи
-
-Honeypy сохраняет все действия атакующих в лог-файлы:
-
-| Файл            | Назначение                   |
-| --------------- | ---------------------------- |
-| audits.log      | Общие события                |
-| cmd_audits.log  | Команды, введённые через SSH |
-| http_audits.log | HTTP-запросы и попытки входа |
-
-Пример записи:
+Example log entry:
 
 ```
 2025-12-19 14:22:10 | 192.168.1.15 | admin:admin | SSH login attempt
@@ -107,27 +93,25 @@ Honeypy сохраняет все действия атакующих в лог-
 
 ---
 
-## ⚙️ Настройка
+## ⚙️ Configuration
 
-Вы можете изменить:
+You can modify:
 
-* порты сервисов
-* баннеры
-* допустимые логины
-* формат логов
+* service ports
+* banners
+* allowed usernames
+* log format
 
-Все настройки находятся прямо в исходных файлах модулей.
-
----
-
-## ⚠️ ВАЖНО
-
-Honeypot **не предназначен для использования на боевых серверах** без изоляции.
-Используйте его:
-
-* в лабораторных средах
-* на VM
-* в учебных целях
-* для изучения атак
+All configuration options are located directly in the source files of the modules.
 
 ---
+
+## ⚠️ IMPORTANT
+
+This honeypot is **not intended for use on production servers** without proper isolation.
+Use it only:
+
+* in lab environments
+* on virtual machines
+* for educational purposes
+* for attack analysis and research
